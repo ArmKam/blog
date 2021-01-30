@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { featchPosts } from '../actions';
+import { featchPostsAndUsers } from '../actions';
 import UserHeader from './UserHeader';
 
 class PostList extends React.Component {
 
     componentDidMount() {
-        this.props.featchPosts();
+        this.props.featchPostsAndUsers();
     }
 
     renderList() {
@@ -19,7 +19,8 @@ class PostList extends React.Component {
                             <h2>{post.title}</h2>
                             <p>{post.body}</p>
                         </div>
-                        <UserHeader userId={post.userId} />
+                        <strong> <UserHeader userId={post.userId} />
+                        </strong>
                     </div>
                 </div>
             );
@@ -40,4 +41,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps, { featchPosts })(PostList);
+export default connect(mapStateToProps, { featchPostsAndUsers })(PostList);
